@@ -16,7 +16,7 @@ app.get("/api/movies", (req, res) => {
   
   
   app.get("/api/movies/:id", (req, res) => {
-    res.send(`Welcome ${req.params.id}`);
+    res.send(` ${req.params.id}`);
   });
   app.get("/users/:id", );
 
