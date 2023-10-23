@@ -14,23 +14,13 @@ app.get("/api/movies", (req, res) => {
 
   
   
+  const getMovie =(req, res) =>{
+const idMovie = parseInt(req.params.id -1)
+idMovie >= movies.length ? res.status(404).send("Not Found") : res.status(200).json(movies[idMovie])
+ }
+  app.get("/api/movies/:id", getMovie);
   
-  app.get("/api/movies/:id", (req, res) => {
-    res.send(` ${req.params.id}`);
-  });
-  app.get("/users/:id", );
-
-
-
-
-
-
-
-
-
-
-
-  const movies = [
+ const movies = [
   {
     id: 1,
     title: "Citizen Kane",
