@@ -10,12 +10,21 @@ describe("GET /api/movies", () => {
     expect(response.status).toEqual(200);
   });
 });
-describe("GET /api/movies/:id 1", () => {
+
+describe("GET /api/movies/1", () => {
   it("should return all movies", async () => {
     /** Code your test here */
-    const response = await request(app).get("/api/movies/:id 1");
+    const response = await request(app).get("/api/movies/1");
 
     expect(response.headers["content-type"]).toMatch(/json/);
     expect(response.status).toEqual(200);
+  });
+});
+
+describe("GET /api/movies/0", () => {
+  it("should return all movies", async () => {
+    /** Code your test here */
+    const response = await request(app).get("/api/movies/0");
+    expect(response.status).toEqual(404);
   });
 });
