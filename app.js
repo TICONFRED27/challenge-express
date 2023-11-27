@@ -2,25 +2,23 @@ const express = require("express");
 
 const app = express();
 
-const port = 3001;
-
 app.get("/", (req, res) => {
-    res.send("Welcome to my favourite movie list");
-  });
+  res.send("Welcome to my favourite movie list");
+});
 
 app.get("/api/movies", (req, res) => {
-    res.status(200).json(movies);
-  });
+  res.status(200).json(movies);
+});
 
-  
-  
-  const getMovie =(req, res) =>{
-const idMovie = parseInt(req.params.id -1)
-idMovie >= movies.length ? res.status(404).send("Not Found") : res.status(200).json(movies[idMovie])
- }
-  app.get("/api/movies/:id", getMovie);
-  
- const movies = [
+const getMovie = (req, res) => {
+  const idMovie = parseInt(req.params.id - 1);
+  idMovie >= movies.length
+    ? res.status(404).send("Not Found")
+    : res.status(200).json(movies[idMovie]);
+};
+app.get("/api/movies/:id", getMovie);
+
+const movies = [
   {
     id: 1,
     title: "Citizen Kane",
@@ -46,11 +44,4 @@ idMovie >= movies.length ? res.status(404).send("Not Found") : res.status(200).j
     duration: 180,
   },
 ];
-
-app.listen(port, (err) => {
-  if (err) {
-    console.error("Something bad happened");
-  } else {
-    console.log(`Server is listening on ${port}`);
-  }
-});
+module.exports = app;
